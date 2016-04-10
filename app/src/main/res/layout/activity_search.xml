@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="SearchBinding">
+
+        <import type="com.maumqmaum.practicedatabindingrx.model.TweetModel"/>
+
+        <import type="java.util.List"/>
+
+        <variable
+            name="viewModel"
+            type="com.maumqmaum.practicedatabindingrx.viewmodel.SearchViewModel"/>
+
+        <variable
+            name="tweets"
+            type="List&lt;TweetModel&gt;"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:enabled="@{viewModel.enabled}"
+                android:onClick="onSearchBtnClick"
+                android:text="@string/search_login"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/search_text"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/search_button"
+                android:hint="@string/search_twitter_hint"
+                android:text="@{viewModel.searchText}"/>
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:items="@{tweets}"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_enabled="false">
+        <layer-list>
+            <item android:drawable="@color/color_accent_a100"/>
+            <item>
+                <color android:color="#88FFFFFF"/>
+            </item>
+        </layer-list>
+    </item>
+
+    <item android:drawable="@color/colorAccent" android:state_pressed="false"/>
+
+</selector>

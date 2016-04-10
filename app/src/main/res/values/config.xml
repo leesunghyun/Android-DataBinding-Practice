@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="twitter_consumer_key">your consumer key</string>
+    <string name="twitter_secret_key">your secret key</string>
+    <string name="twitter_callback_url">practice-databinding://twitter-login</string>
+    <string name="twitter_verifier">oauth_verifier</string>
+</resources>

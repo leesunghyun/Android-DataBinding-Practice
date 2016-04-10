@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PracticeDataBiding</string>
+    <string name="login_id_hint">id</string>
+    <string name="login_password_hint">password</string>
+    <string name="search_twitter_hint">search twitter</string>
+    <string name="button_login">next</string>
+    <string name="search_login">search</string>
+</resources>
