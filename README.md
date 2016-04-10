@@ -10,8 +10,7 @@ twitter_secret_key
 create new app > https://apps.twitter.com/
 # Using librarys
 rxbinding
-retrofit2
-okhttp3
+gson
 timber
 lombok
 twitter4j
