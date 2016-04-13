@@ -4,6 +4,9 @@ import com.maumqmaum.practicedatabindingrx.App;
 import com.maumqmaum.practicedatabindingrx.R;
 import com.maumqmaum.practicedatabindingrx.util.PreferenceUtil;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import rx.Observable;
 import rx.functions.Func0;
 import rx.schedulers.Schedulers;
@@ -23,6 +26,10 @@ public class TwitterRepository {
     private static TwitterRepository instance;
 
     private Twitter twitter;
+
+    @Getter
+    @Setter
+    private RequestToken requestToken;
 
     private TwitterRepository() {
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();

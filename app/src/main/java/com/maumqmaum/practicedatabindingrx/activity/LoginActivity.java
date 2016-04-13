@@ -24,8 +24,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public LoginViewModel viewModel;
 
-    public RequestToken requestToken;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void requestTwitterLogin(Uri uri) {
+        RequestToken requestToken = TwitterRepository.getInstance().getRequestToken();
         if (requestToken == null) {
             TwitterRepository.getInstance().requestRequestToken();
         } else {
@@ -59,21 +58,21 @@ public class LoginActivity extends AppCompatActivity {
         viewModel.notifyPropertyChanged(BR.idError);
         viewModel.notifyPropertyChanged(BR.passwordError);
 //        if (viewModel.getIdError() == null && viewModel.getPasswordError() == null) {
-            AccessToken accessToken = App.getPreferenceUtil().getObejct(PreferenceUtil.KEY_TWITTER_ACCESS_TOKEN,
-                    AccessToken.class);
-            if (accessToken == null) {
-                TwitterRepository.getInstance().requestRequestToken().subscribe(new Action1<RequestToken>() {
-                    @Override
-                    public void call(RequestToken requestToken) {
-                        LoginActivity.this.requestToken = requestToken;
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(requestToken.getAuthenticationURL()));
-                        startActivity(intent);
-                    }
-                });
-            } else {
-                startActivity(new Intent(this, SearchActivity.class));
-            }
-            finish();
+        AccessToken accessToken = App.getPreferenceUtil().getObejct(PreferenceUtil.KEY_TWITTER_ACCESS_TOKEN,
+                AccessToken.class);
+        if (accessToken == null) {
+            TwitterRepository.getInstance().requestRequestToken().subscribe(new Action1<RequestToken>() {
+                @Override
+                public void call(RequestToken requestToken) {
+                    TwitterRepository.getInstance().setRequestToken(requestToken);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(requestToken.getAuthenticationURL()));
+                    startActivity(intent);
+                }
+            });
+        } else {
+            startActivity(new Intent(this, SearchActivity.class));
+        }
+        finish();
 //        }
     }
 }
