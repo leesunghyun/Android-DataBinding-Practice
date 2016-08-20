@@ -9,9 +9,9 @@ twitter_consumer_key
 twitter_secret_key  
 create new app > https://apps.twitter.com/
 # Using librarys
-rxbinding
-gson
-timber
-lombok
-twitter4j
-materialedittext
+rxbinding  
+gson  
+timber  
+lombok  
+twitter4j  
+materialedittext  
